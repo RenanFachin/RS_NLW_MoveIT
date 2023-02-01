@@ -12,6 +12,30 @@ module.exports = {
         Rajdhani: ['var(--font-rajdhani)', ...fontFamily.sans]
       }
     },
+    colors: {
+      white: "#ffffff",
+      background: "#f2f3f5",
+      text: {
+        300: "#DCDDE0",
+        500: "#666666",
+        highlight: "#B3B9FF",
+        title: "#2E384D"
+      },
+      red: {
+        500: "#E83F5B"
+      },
+      green: {
+        500: "#4CD62B"
+      },
+      blue: {
+        500: "#5965E0",
+        600: "#4953B8",
+      },
+      cyan: {
+        500: "#2AA9E0"
+      }
+
+    }
   },
   plugins: [],
 }

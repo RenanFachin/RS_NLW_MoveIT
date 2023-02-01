@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-background text-text-500
+}
+
+body, input, textarea, button {
+    @apply font-Inter text-base font-normal
+}
