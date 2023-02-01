@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react"
-
+import Image from "next/image";
+import CheckIcon from '../../public/icons/checkIcon.svg'
 
 let countDownTimeout: NodeJS.Timeout;
+const totalTimeCountDown = 0.1 * 60
 
 export function CountDown() {
-    const [time, setTime] = useState(25 * 60)
+    const [time, setTime] = useState(totalTimeCountDown)
 
     const minutes = Math.floor(time / 60)
     const seconds = time % 60
@@ -22,7 +24,11 @@ export function CountDown() {
     function resetCountDown() {
         clearTimeout(countDownTimeout)
         setIsActive(false)
+        setTime(totalTimeCountDown)
     }
+
+    // Mostrando um modal a partir da condição deste estado
+    const [hasFinished, setHasFinished] = useState(false)
 
     useEffect(() => {
         // Se active for true e time for maior que zero
@@ -32,6 +38,9 @@ export function CountDown() {
                 // Tirando 1 segundo a cada segundo que passar após o a variável active virar true
                 setTime(time - 1)
             }, 1000)
+        } else if (isActive && time === 0) {
+            setHasFinished(true)
+            setIsActive(false)
         }
     }, [isActive, time]) // Executa quando o active mudar, ou seja, qnd o usuário clicar no botão e quando o time mudar
 
@@ -67,27 +76,53 @@ export function CountDown() {
 
 
             {
-                isActive ?
+                hasFinished ?
                     (
                         <button
-                            onClick={resetCountDown}
-                            type="button"
-                            className="w-full h-20 mt-8 flex items-center justify-center rounded-md bg-white text-text-title text-xl font-semibold hover:bg-red-500 hover:text-white transition-colors"
+                            disabled
+                            className="w-full h-20 mt-8 flex items-center justify-center rounded-md disabled:bg-white disabled:text-text-500 text-xl font-semibold transition-colors disabled:cursor-not-allowed border-b-4 border-b-green-500 gap-4"
                         >
-                            Abandonar ciclo
+                            Ciclo encerrado
+
+                            <Image
+                                src={CheckIcon}
+                                alt={'Imagem de um check'}
+                            />
+
                         </button>
                     )
+
                     :
+
                     (
-                        <button
-                            onClick={startCountDown}
-                            type="button"
-                            className="w-full h-20 mt-8 flex items-center justify-center rounded-md bg-blue-500 text-white text-xl font-semibold hover:bg-blue-600 transition-colors"
-                        >
-                            Iniciar um ciclo
-                        </button>
+                        <>
+                            {
+                                isActive ?
+                                    (
+                                        <button
+                                            onClick={resetCountDown}
+                                            type="button"
+                                            className="w-full h-20 mt-8 flex items-center justify-center rounded-md bg-white text-text-title text-xl font-semibold hover:bg-red-500 hover:text-white transition-colors"
+                                        >
+                                            Abandonar ciclo
+                                        </button>
+                                    )
+                                    :
+                                    (
+                                        <button
+                                            onClick={startCountDown}
+                                            type="button"
+                                            className="w-full h-20 mt-8 flex items-center justify-center rounded-md bg-blue-500 text-white text-xl font-semibold hover:bg-blue-600 transition-colors"
+                                        >
+                                            Iniciar um ciclo
+                                        </button>
+                                    )
+                            }
+                        </>
                     )
             }
+
+
 
 
 
