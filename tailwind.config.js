@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         Inter: ['var(--font-inter)', ...fontFamily.sans],
         Rajdhani: ['var(--font-rajdhani)', ...fontFamily.sans]
+      },
+      boxShadow: {
+        'custom': '0 0 60px rgba(0, 0, 0, 0.05)',
       }
     },
     colors: {
