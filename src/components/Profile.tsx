@@ -5,7 +5,7 @@ import Level from '../../public/icons/level.svg'
 
 export function Profile() {
     return (
-        <div className="flex items-center">
+        <div className="flex items-center font-Inter">
 
             <Image
                 src={'https://github.com/RenanFachin.png'}

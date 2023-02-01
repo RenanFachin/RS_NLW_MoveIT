@@ -1,3 +1,4 @@
+import { CompletedChallenges } from "@/components/CompletedChallenges";
 import { ExperienceBar } from "@/components/ExperienceBar";
 import { Profile } from "@/components/Profile";
 
@@ -9,6 +10,8 @@ export default function Home() {
       <section className="flex-1 grid grid-cols-2 gap-24 content-center">
         <div>
           <Profile />
+
+          <CompletedChallenges />
         </div>
 
         <div></div>
