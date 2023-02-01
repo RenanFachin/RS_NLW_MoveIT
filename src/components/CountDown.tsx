@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"
 
+
+let countDownTimeout: NodeJS.Timeout;
+
 export function CountDown() {
-    const [time, setTime] = useState(1 * 60)
+    const [time, setTime] = useState(25 * 60)
 
     const minutes = Math.floor(time / 60)
     const seconds = time % 60
@@ -10,22 +13,27 @@ export function CountDown() {
     const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('')
     const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('')
 
-    const [active, setActive] = useState(false)
+    const [isActive, setIsActive] = useState(false)
 
     function startCountDown() {
-        setActive(true)
+        setIsActive(true)
+    }
+
+    function resetCountDown() {
+        clearTimeout(countDownTimeout)
+        setIsActive(false)
     }
 
     useEffect(() => {
         // Se active for true e time for maior que zero
-        if (active && time > 0) {
+        if (isActive && time > 0) {
             // Executando uma função a cada segundo que passar
-            setTimeout(() => {
+            countDownTimeout = setTimeout(() => {
                 // Tirando 1 segundo a cada segundo que passar após o a variável active virar true
                 setTime(time - 1)
             }, 1000)
         }
-    }, [active, time]) // Executa quando o active mudar, ou seja, qnd o usuário clicar no botão e quando o time mudar
+    }, [isActive, time]) // Executa quando o active mudar, ou seja, qnd o usuário clicar no botão e quando o time mudar
 
     return (
         <>
@@ -58,13 +66,32 @@ export function CountDown() {
             </div>
 
 
-            <button
-                onClick={startCountDown}
-                type="button"
-                className="w-full h-20 mt-8 flex items-center justify-center rounded-md bg-blue-500 text-white text-xl font-semibold hover:bg-blue-600 transition-colors"
-            >
-                Iniciar um ciclo
-            </button>
+            {
+                isActive ?
+                    (
+                        <button
+                            onClick={resetCountDown}
+                            type="button"
+                            className="w-full h-20 mt-8 flex items-center justify-center rounded-md bg-white text-text-title text-xl font-semibold hover:bg-red-500 hover:text-white transition-colors"
+                        >
+                            Abandonar ciclo
+                        </button>
+                    )
+                    :
+                    (
+                        <button
+                            onClick={startCountDown}
+                            type="button"
+                            className="w-full h-20 mt-8 flex items-center justify-center rounded-md bg-blue-500 text-white text-xl font-semibold hover:bg-blue-600 transition-colors"
+                        >
+                            Iniciar um ciclo
+                        </button>
+                    )
+            }
+
+
+
+
         </>
     )
 }
