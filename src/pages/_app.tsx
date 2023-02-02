@@ -5,8 +5,7 @@ import type { AppProps } from 'next/app'
 import { Inter, Rajdhani } from '@next/font/google'
 
 // Contextos
-import { ChallengeContext } from '../contexts/ChallengsContext'
-import { useState } from 'react'
+import { ChallengeProvider } from '../contexts/ChallengsContext'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,17 +20,13 @@ const rajdhani = Rajdhani({
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [level, setLevel] = useState(1)
 
-  function levelUp(){
-    setLevel(level + 1)
-  }
 
   return (
     <div className={`${inter.variable} ${rajdhani.variable} font-sans`}>
-      <ChallengeContext.Provider value={{level, levelUp}}>
+      <ChallengeProvider>
         <Component {...pageProps} />
-      </ChallengeContext.Provider>
+      </ChallengeProvider>
     </div>
   )
 }

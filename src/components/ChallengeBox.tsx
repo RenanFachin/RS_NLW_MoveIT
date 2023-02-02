@@ -8,9 +8,6 @@ import { ChallengeContext } from "@/contexts/ChallengsContext";
 export function ChallengeBox() {
     const hasActiveChallenge = true
 
-    const ContextData = useContext(ChallengeContext)
-    console.log(ContextData)
-
     return (
         <div className="bg-white h-full rounded-md shadow-custom py-6 px-8 flex flex-col items-center justify-center text-center">
             {
