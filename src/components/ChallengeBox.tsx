@@ -2,27 +2,45 @@ import Image from "next/image";
 
 import LevelUp from '../../public/icons/level-up.svg'
 import Body from '../../public/icons/body.svg'
+import Eye from '../../public/icons/eye.svg'
+
+import { useChallenges } from "@/hooks/useChallenges";
 
 
 export function ChallengeBox() {
-    const hasActiveChallenge = true
+
+    const { activeChallenge } = useChallenges()
 
     return (
         <div className="bg-white h-full rounded-md shadow-custom py-6 px-8 flex flex-col items-center justify-center text-center">
             {
-                hasActiveChallenge ?
+                activeChallenge ?
                     (
                         <div className="h-full flex flex-col">
                             <header className="text-blue-500 font-semibold text-xl px-8 pb-6 border-b border-b-text-300">
-                                Ganhe 400 xp
+                                Ganhe {activeChallenge.amount} xp
                             </header>
 
                             <main className="flex-1 flex flex-col items-center justify-center">
-                                <Image
-                                    className=""
-                                    src={Body}
-                                    alt=""
-                                />
+                                {
+                                    activeChallenge.type === 'eye' ?
+                                        (
+                                            <Image
+                                                className=""
+                                                src={Eye}
+                                                alt=""
+                                            />
+                                        ) 
+                                        :
+                                        (
+                                            <Image
+                                                className=""
+                                                src={Body}
+                                                alt=""
+                                            />
+                                        )
+                                }
+
 
                                 <strong
                                     className="font-semibold text-3xl text-text-title my-4"
@@ -31,7 +49,7 @@ export function ChallengeBox() {
                                 </strong>
 
                                 <p className="leading-relaxed">
-                                    Levante e faça uma caminhada de 3 minutos.
+                                    {activeChallenge.description}
                                 </p>
                             </main>
 
