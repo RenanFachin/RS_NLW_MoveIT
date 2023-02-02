@@ -1,4 +1,11 @@
+import { useChallenges } from "@/hooks/useChallenges"
+
 export function ExperienceBar() {
+
+    const { currentExperience, experienceToNextLevel } = useChallenges()
+
+    const percentToNextLevel = Math.round((currentExperience * 100)) / experienceToNextLevel
+
     return (
         <header className="flex items-center">
             <span className="font-normal">
@@ -10,21 +17,21 @@ export function ExperienceBar() {
                 <div
                     className="h-1 rounded-md bg-green-500"
                     // Esta estilização está inline por motivos de ser um valor que vai se alterar durante o uso da aplicação
-                    style={{ width: '50%' }}
+                    style={{ width: `${percentToNextLevel}%` }}
                 />
 
                 <span
                     className="absolute top-3 -translate-x-1/2"
                     // Esta estilização está inline por motivos de ser um valor que vai se alterar durante o uso da aplicação
-                    style={{ left: '50%' }}
+                    style={{ left: `${percentToNextLevel}%` }}
                 >
-                    300 xp
+                    {currentExperience} xp
                 </span>
 
             </div>
 
             <span className="font-normal">
-                600 xp
+                {experienceToNextLevel} xp
             </span>
         </header>
     )

@@ -9,7 +9,7 @@ import { useChallenges } from "@/hooks/useChallenges";
 
 export function ChallengeBox() {
 
-    const { activeChallenge } = useChallenges()
+    const { activeChallenge, resetChallenge } = useChallenges()
 
     return (
         <div className="bg-white h-full rounded-md shadow-custom py-6 px-8 flex flex-col items-center justify-center text-center">
@@ -57,7 +57,7 @@ export function ChallengeBox() {
                                 <button
                                     type="button"
                                     className="h-12 flex items-center justify-center rounded-lg text-white font-semibold bg-red-500 hover:brightness-90 shadow-lg transition-all"
-                                    onClick={() => { }}
+                                    onClick={resetChallenge}
                                 >
                                     Falhei
                                 </button>
