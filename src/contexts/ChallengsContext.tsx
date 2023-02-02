@@ -5,6 +5,7 @@ interface ChallengeContextProps {
     currentExperience: number;
     challengesCompleted: number;
     levelUp: () => void;
+    startNewChallenge: () => void;
 }
 
 export const ChallengeContext = createContext({} as ChallengeContextProps)
@@ -22,8 +23,20 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
         setLevel(level + 1)
     }
 
+    function startNewChallenge() {
+        console.log('startNewChallenge')
+    }
+
     return (
-        <ChallengeContext.Provider value={{ level, currentExperience, challengesCompleted, levelUp }}>
+        <ChallengeContext.Provider
+            value={{
+                level,
+                currentExperience,
+                challengesCompleted,
+                levelUp,
+                startNewChallenge
+            }}
+        >
             {children}
         </ChallengeContext.Provider>
 

@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react"
 import Image from "next/image";
 import CheckIcon from '../../public/icons/checkIcon.svg'
+import { useChallenges } from "@/hooks/useChallenges";
 
 let countDownTimeout: NodeJS.Timeout;
 const totalTimeCountDown = 0.1 * 60
 
 export function CountDown() {
+
+    const { startNewChallenge } = useChallenges()
+
+
     const [time, setTime] = useState(totalTimeCountDown)
 
     const minutes = Math.floor(time / 60)
@@ -41,6 +46,9 @@ export function CountDown() {
         } else if (isActive && time === 0) {
             setHasFinished(true)
             setIsActive(false)
+
+            // Disparando um novo desafio com o context
+            startNewChallenge()
         }
     }, [isActive, time]) // Executa quando o active mudar, ou seja, qnd o usuário clicar no botão e quando o time mudar
 

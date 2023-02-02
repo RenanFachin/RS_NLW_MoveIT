@@ -2,13 +2,10 @@ import Image from "next/image";
 
 import LevelUp from '../../public/icons/level-up.svg'
 import Body from '../../public/icons/body.svg'
-import { useChallenges } from "@/hooks/useChallenges";
 
 
 export function ChallengeBox() {
     const hasActiveChallenge = true
-
-    const {  } = useChallenges()
 
     return (
         <div className="bg-white h-full rounded-md shadow-custom py-6 px-8 flex flex-col items-center justify-center text-center">
