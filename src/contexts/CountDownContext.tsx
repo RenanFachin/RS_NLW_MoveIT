@@ -44,6 +44,8 @@ export function CountDownProvider({ children }: CountDownProviderProps) {
         clearTimeout(countDownTimeout)
         setIsActive(false)
         setTime(totalTimeCountDown)
+
+        setHasFinished(false)
     }
 
     useEffect(() => {
