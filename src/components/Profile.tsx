@@ -1,4 +1,5 @@
 import { ChallengeContext } from "@/contexts/ChallengsContext"
+import { useChallenges } from "@/hooks/useChallenges"
 import Image from "next/image"
 import { useContext } from "react"
 
@@ -6,6 +7,8 @@ import { useContext } from "react"
 import Level from '../../public/icons/level.svg'
 
 export function Profile() {
+
+    const { level } = useChallenges()
 
     return (
         <div className="flex items-center font-Inter">
@@ -30,7 +33,7 @@ export function Profile() {
                         className="mr-2"
                     />
 
-                    Level 1
+                    Level {level}
                 </p>
             </div>
 

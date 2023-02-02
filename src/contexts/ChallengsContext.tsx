@@ -18,6 +18,7 @@ interface ChallengeContextProps {
     levelUp: () => void;
     startNewChallenge: () => void;
     resetChallenge: () => void;
+    completeChallenge: () => void;
     experienceToNextLevel: number;
 }
 
@@ -59,6 +60,31 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
         setActiveChallenge(null)
     }
 
+    // Função chamada quando o usuário clicar em completado com sucesso
+    function completeChallenge() {
+        if (!activeChallenge) {
+            return;
+        }
+
+        // Buscando a pontuação total do desafio concluído
+        const { amount } = activeChallenge
+
+
+        // Total de experiência do usuário após completar o desafio
+        let finalExperience = currentExperience + amount
+
+
+        // Caso o usuário ultrapasse o level, fazer ele ficar com a quantia restante
+        if (finalExperience >= experienceToNextLevel) {
+            finalExperience = finalExperience - experienceToNextLevel
+            levelUp()
+        }
+
+        setCurrentExperience(finalExperience)
+        setActiveChallenge(null)
+        setChallengesCompleted(challengesCompleted + 1)
+    }
+
     return (
         <ChallengeContext.Provider
             value={{
@@ -69,6 +95,7 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
                 levelUp,
                 startNewChallenge,
                 resetChallenge,
+                completeChallenge,
                 experienceToNextLevel
             }}
         >
