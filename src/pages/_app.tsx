@@ -25,7 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={`${inter.variable} ${rajdhani.variable} font-sans`}>
       <ChallengeProvider>
-        <Component {...pageProps} />
+
+          <Component {...pageProps} />
+          
       </ChallengeProvider>
     </div>
   )

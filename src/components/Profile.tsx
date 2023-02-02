@@ -1,8 +1,6 @@
 import { ChallengeContext } from "@/contexts/ChallengsContext"
 import { useChallenges } from "@/hooks/useChallenges"
 import Image from "next/image"
-import { useContext } from "react"
-
 
 import Level from '../../public/icons/level.svg'
 

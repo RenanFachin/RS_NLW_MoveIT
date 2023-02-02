@@ -1,56 +1,24 @@
-import { useState, useEffect } from "react"
 import Image from "next/image";
 import CheckIcon from '../../public/icons/checkIcon.svg'
-import { useChallenges } from "@/hooks/useChallenges";
+import { useCountDown } from "@/hooks/useCountDown";
 
-let countDownTimeout: NodeJS.Timeout;
-const totalTimeCountDown = 0.1 * 60
+
 
 export function CountDown() {
 
-    const { startNewChallenge } = useChallenges()
-
-
-    const [time, setTime] = useState(totalTimeCountDown)
-
-    const minutes = Math.floor(time / 60)
-    const seconds = time % 60
+    const {
+        minutes,
+        seconds,
+        hasFinished,
+        isActive,
+        resetCountDown,
+        startCountDown
+    } = useCountDown()
 
     // Atribuindo cada valor dentro dos box de span
     const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('')
     const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('')
 
-    const [isActive, setIsActive] = useState(false)
-
-    function startCountDown() {
-        setIsActive(true)
-    }
-
-    function resetCountDown() {
-        clearTimeout(countDownTimeout)
-        setIsActive(false)
-        setTime(totalTimeCountDown)
-    }
-
-    // Mostrando um modal a partir da condição deste estado
-    const [hasFinished, setHasFinished] = useState(false)
-
-    useEffect(() => {
-        // Se active for true e time for maior que zero
-        if (isActive && time > 0) {
-            // Executando uma função a cada segundo que passar
-            countDownTimeout = setTimeout(() => {
-                // Tirando 1 segundo a cada segundo que passar após o a variável active virar true
-                setTime(time - 1)
-            }, 1000)
-        } else if (isActive && time === 0) {
-            setHasFinished(true)
-            setIsActive(false)
-
-            // Disparando um novo desafio com o context
-            startNewChallenge()
-        }
-    }, [isActive, time]) // Executa quando o active mudar, ou seja, qnd o usuário clicar no botão e quando o time mudar
 
     return (
         <>

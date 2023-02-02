@@ -3,6 +3,7 @@ import { CompletedChallenges } from "@/components/CompletedChallenges";
 import { CountDown } from "@/components/CountDown";
 import { ExperienceBar } from "@/components/ExperienceBar";
 import { Profile } from "@/components/Profile";
+import { CountDownProvider } from "@/contexts/CountDownContext";
 
 import Head from "next/head";
 
@@ -17,6 +18,8 @@ export default function Home() {
 
       <ExperienceBar />
 
+
+      <CountDownProvider>
       <section className="flex-1 grid grid-cols-2 gap-24 content-center">
         <div>
           <Profile />
@@ -30,6 +33,8 @@ export default function Home() {
           <ChallengeBox />
         </div>
       </section>
+
+      </CountDownProvider>
     </div>
   )
 }
