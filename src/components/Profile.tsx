@@ -1,11 +1,20 @@
+import { ChallengeContext } from "@/contexts/ChallengsContext"
 import Image from "next/image"
+import { useContext } from "react"
 
 
 import Level from '../../public/icons/level.svg'
 
 export function Profile() {
+    const { levelUp, level } = useContext(ChallengeContext)
+
+
     return (
         <div className="flex items-center font-Inter">
+
+            <button className="bg-cyan-500 rounded-3xl w-14 h-6" onClick={levelUp}>
+                lvl up
+            </button>
 
             <Image
                 src={'https://github.com/RenanFachin.png'}
@@ -27,7 +36,8 @@ export function Profile() {
                         className="mr-2"
                     />
 
-                    Level 1
+                    {/* Level 1 */}
+                    Level {level}
                 </p>
             </div>
 
