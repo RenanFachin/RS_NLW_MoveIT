@@ -4,9 +4,6 @@ import type { AppProps } from 'next/app'
 // fontes externas
 import { Inter, Rajdhani } from '@next/font/google'
 
-// Contextos
-import { ChallengeProvider } from '../contexts/ChallengsContext'
-
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -24,11 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <div className={`${inter.variable} ${rajdhani.variable} font-sans`}>
-      <ChallengeProvider>
-
+      
           <Component {...pageProps} />
-          
-      </ChallengeProvider>
+
     </div>
   )
 }

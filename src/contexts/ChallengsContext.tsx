@@ -3,6 +3,9 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 // importando o arquivo json de desafios
 import challenges from '../../challenges.json'
 
+// Cookies
+import Cookies from 'js-cookie'
+
 //Tipando o que vem do arquivo JSON para depois atribuir no activeChallenge
 interface Challenge {
     type?: 'body' | 'eye';
@@ -26,12 +29,17 @@ export const ChallengeContext = createContext({} as ChallengeContextProps)
 
 interface ChallengeProviderProps {
     children: ReactNode;
+    level: number;
+    currentExperience: number;
+    challengesCompleted: number;
 }
 
-export function ChallengeProvider({ children }: ChallengeProviderProps) {
-    const [level, setLevel] = useState(1)
-    const [currentExperience, setCurrentExperience] = useState(0)
-    const [challengesCompleted, setChallengesCompleted] = useState(0)
+// desta forma o ...rest terá level, currentexperience e challengescompleted dentro
+export function ChallengeProvider({ children, ...rest }: ChallengeProviderProps) {
+
+    const [level, setLevel] = useState(rest.level ?? 1)
+    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0)
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0)
 
     // criando um state para armazenar o challenge
     const [activeChallenge, setActiveChallenge] = useState(null)
@@ -43,8 +51,18 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
     // Pedindo autorização do usuário para enviar notificação
     useEffect(() => {
         Notification.requestPermission()
-        
+
     }, [])
+
+    // Salvando os dados do usuário nos cookies
+    // Quando houver alteração nos valores dos states de level, currentExperience e challengeCompleted os dados serão salvos nos cookies novamente
+    useEffect(() => {
+        // Salvando os dados
+        Cookies.set('level', String(level))
+        Cookies.set('currentExperience', String(currentExperience))
+        Cookies.set('challengesCompleted', String(challengesCompleted))
+
+    }, [level, currentExperience, challengesCompleted])
 
 
     function levelUp() {
