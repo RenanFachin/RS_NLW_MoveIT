@@ -8,11 +8,7 @@ import { CountDownProvider } from "@/contexts/CountDownContext";
 import Head from "next/head";
 import { GetServerSideProps } from 'next'
 import { ChallengeProvider } from "@/contexts/ChallengsContext";
-import { useState } from "react";
-import { useTheme } from "@/hooks/useTheme";
-
-import Switch from 'react-switch'
-import { BsMoon, BsSun } from 'react-icons/bs'
+import { ThemeButton } from "@/components/ThemeButton";
 
 
 interface HomeProps {
@@ -22,8 +18,6 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-
-  const { toggleThemeHandler, actualTheme } = useTheme()
 
   return (
     <ChallengeProvider
@@ -44,29 +38,7 @@ export default function Home(props: HomeProps) {
               <div className="flex justify-between">
                 <Profile />
 
-                <button>
-                  <Switch
-                    className='ml-7'
-                    onChange={toggleThemeHandler}
-                    checked={actualTheme}
-                    checkedIcon={
-                      <div className='flex items-center justify-center h-full text-white'>
-                        <BsMoon />
-                      </div>
-                    }
-                    uncheckedIcon={
-                      <div className='flex items-center justify-center h-full text-white'>
-                        <BsSun />
-                      </div>
-                    }
-                    boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                    activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                    offHandleColor='#6F48C9'
-                    onHandleColor="#6F48C9"
-                    offColor="#9F75FF"
-                    onColor="#9F75FF"
-                  />
-                </button>
+                <ThemeButton />
               </div>
 
               <CompletedChallenges />
