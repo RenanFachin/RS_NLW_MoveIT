@@ -18,7 +18,7 @@ interface CountDownProviderProps {
 
 
 let countDownTimeout: NodeJS.Timeout;
-const totalTimeCountDown = 0.1 * 60
+const totalTimeCountDown = 25 * 60
 
 export function CountDownProvider({ children }: CountDownProviderProps) {
 
