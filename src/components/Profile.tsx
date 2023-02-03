@@ -1,4 +1,3 @@
-import { ChallengeContext } from "@/contexts/ChallengsContext"
 import { useChallenges } from "@/hooks/useChallenges"
 import Image from "next/image"
 

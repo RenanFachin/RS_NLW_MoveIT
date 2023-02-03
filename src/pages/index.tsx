@@ -23,14 +23,7 @@ interface HomeProps {
 
 export default function Home(props: HomeProps) {
 
-  const themeCtx: { isDarkTheme: boolean, toggleThemeHandler: () => void } = useTheme()
-  const [actualTheme, setActualTheme] = useState(Boolean)
-
-  function toggleThemeHandler() {
-    themeCtx.toggleThemeHandler();
-
-    setActualTheme(!actualTheme)
-  }
+  const { toggleThemeHandler, actualTheme } = useTheme()
 
   return (
     <ChallengeProvider

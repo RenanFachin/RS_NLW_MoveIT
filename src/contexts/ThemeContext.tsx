@@ -1,8 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 
 interface ThemeContextData {
-  isDarkTheme: boolean,
+  isDarkTheme: boolean;
   toggleThemeHandler: () => void;
+  actualTheme: boolean;
 }
 
 export const ThemeContext = createContext({} as ThemeContextData)
@@ -14,6 +15,8 @@ interface ThemeContextProps {
 
 export function ThemeContextProvider({ children }: ThemeContextProps) {
   const [isDarkTheme, setIsDarkTheme] = useState(true)
+
+  const [actualTheme, setActualTheme] = useState(false)
 
   function isLocalStorageEmpty() { 
     return !localStorage.getItem("isDarkTheme");
@@ -42,6 +45,8 @@ export function ThemeContextProvider({ children }: ThemeContextProps) {
     setIsDarkTheme(!isDarkTheme)
     toggleDarkClassToBody()
     setValueToLocalStorage()
+
+    setActualTheme(!actualTheme)
   }
 
   function toggleDarkClassToBody() {
@@ -55,7 +60,7 @@ export function ThemeContextProvider({ children }: ThemeContextProps) {
   useEffect(() => initialThemeHandler())
 
   return (
-    <ThemeContext.Provider value={{ isDarkTheme: true, toggleThemeHandler }}>
+    <ThemeContext.Provider value={{ isDarkTheme: true, toggleThemeHandler, actualTheme }}>
       {children}
     </ThemeContext.Provider>
   )
