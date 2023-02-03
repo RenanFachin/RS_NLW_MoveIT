@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 
 // fontes externas
 import { Inter, Rajdhani } from '@next/font/google'
+import { ThemeContextProvider } from '@/contexts/ThemeContext'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,10 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
 
   return (
-    <div className={`${inter.variable} ${rajdhani.variable} font-sans`}>
-      
-          <Component {...pageProps} />
-
+    <div className={`${inter.variable} ${rajdhani.variable} font-sans dark:bg-zinc-800`}>
+      <ThemeContextProvider>
+        <Component {...pageProps} />
+      </ThemeContextProvider>
     </div>
   )
 }

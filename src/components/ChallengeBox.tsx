@@ -25,12 +25,12 @@ export function ChallengeBox() {
     }
 
     return (
-        <div className="bg-white h-[370px] md:h-full rounded-md shadow-custom py-4 md:py-6 px-8 flex flex-col items-center justify-center text-center">
+        <div className="bg-white h-[370px] md:h-full rounded-md shadow-custom py-4 md:py-6 px-8 flex flex-col items-center justify-center text-center dark:bg-zinc-600">
             {
                 activeChallenge ?
                     (
                         <div className="h-full flex flex-col">
-                            <header className="text-blue-500 font-semibold text-lg md:text-xl md:px-8 pb-2 md:pb-6 border-b border-b-text-300">
+                            <header className="text-blue-500 font-semibold text-lg md:text-xl md:px-8 pb-2 md:pb-6 border-b border-b-text-300 dark:text-[#9F75FF]">
                                 Ganhe {activeChallenge.amount} xp
                             </header>
 
@@ -56,12 +56,12 @@ export function ChallengeBox() {
 
 
                                 <strong
-                                    className="font-semibold text-xl md:text-3xl text-text-title my-2 md:my-4"
+                                    className="font-semibold text-xl md:text-3xl text-text-title my-2 md:my-4 dark:text-background"
                                 >
                                     Novo desafio
                                 </strong>
 
-                                <p className="text-xs md:text-base leading-relaxed">
+                                <p className="text-xs md:text-base leading-relaxed dark:text-slate-100">
                                     {activeChallenge.description}
                                 </p>
                             </main>
@@ -89,11 +89,11 @@ export function ChallengeBox() {
                     :
                     (
                         <div className="flex flex-col items-center">
-                            <strong className="text-xl md:text-2xl font-medium leading-tight">
+                            <strong className="text-xl md:text-2xl font-medium leading-tight dark:text-background">
                                 Finalize um ciclo para receber um desafio
                             </strong>
 
-                            <p className="flex flex-col gap-2 md:gap-4 items-center leading-snug max-w-[70%] mt-6 md:mt-12">
+                            <p className="flex flex-col gap-2 md:gap-4 items-center leading-snug max-w-[70%] mt-6 md:mt-12 dark:text-background">
                                 <Image
                                     className="mb-2 md:mb-4"
                                     src={LevelUp}

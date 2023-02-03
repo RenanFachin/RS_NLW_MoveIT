@@ -24,13 +24,13 @@ export function CountDown() {
         <>
             <div className="flex items-center font-Rajdhani font-semibold text-text-title">
                 <div
-                    className="flex-1 flex items-center justify-evenly bg-white shadow-custom rounded-md text-7xl md:text-9xl text-center"
+                    className="flex-1 flex items-center justify-evenly bg-white shadow-custom rounded-md text-7xl md:text-9xl text-center dark:text-white dark:bg-zinc-600"
                 >
-                    <span className="flex-1 border-r border-r-[#f0f1f3]">
+                    <span className="flex-1 border-r border-r-[#f0f1f3] dark:border-r-zinc-500">
                         {minuteLeft}
                     </span>
 
-                    <span className="flex-1 border-l border-l-[#f0f1f3]">
+                    <span className="flex-1 border-l border-l-[#f0f1f3] dark:border-l-zinc-500">
                         {minuteRight}
                     </span>
                 </div>
@@ -38,13 +38,13 @@ export function CountDown() {
                 <span className="text-6xl mx-1 md:text-8xl md:mx-2">:</span>
 
                 <div
-                    className="flex-1 flex items-center justify-evenly bg-white shadow-custom rounded-md text-7xl md:text-9xl text-center"
+                    className="flex-1 flex items-center justify-evenly bg-white shadow-custom rounded-md text-7xl md:text-9xl text-center dark:text-white dark:bg-zinc-600"
                 >
-                    <span className="flex-1 border-r border-r-[#f0f1f3]">
+                    <span className="flex-1 border-r border-r-[#f0f1f3] dark:border-r-zinc-500">
                         {secondLeft}
                     </span>
 
-                    <span className="flex-1 border-l border-l-[#f0f1f3]">
+                    <span className="flex-1 border-l border-l-[#f0f1f3] dark:border-l-zinc-500">
                         {secondRight}
                     </span>
                 </div>
@@ -78,7 +78,7 @@ export function CountDown() {
                                         <button
                                             onClick={resetCountDown}
                                             type="button"
-                                            className="w-full h-12 md:h-20 mt-5 md:mt-8 flex items-center justify-center rounded-md bg-white text-text-title text-lg md:text-xl font-semibold hover:bg-red-500 hover:text-white transition-colors"
+                                            className="w-full h-12 md:h-20 mt-5 md:mt-8 flex items-center justify-center rounded-md bg-white text-text-title text-lg md:text-xl font-semibold hover:bg-red-500 hover:text-white transition-colors dark:bg-zinc-700 dark:text-white dark:hover:bg-zinc-500"
                                         >
                                             Abandonar ciclo
                                         </button>
@@ -88,7 +88,7 @@ export function CountDown() {
                                         <button
                                             onClick={startCountDown}
                                             type="button"
-                                            className="w-full h-12 md:h-20 mt-5 md:mt-8 flex items-center justify-center rounded-md bg-blue-500 text-white text-lg md:text-xl font-semibold hover:bg-blue-600 transition-colors"
+                                            className="w-full h-12 md:h-20 mt-5 md:mt-8 flex items-center justify-center rounded-md bg-blue-500 text-white text-lg md:text-xl font-semibold hover:bg-blue-600 transition-colors dark:bg-[#6F48C9] dark:hover:bg-[#9F75FF]"
                                         >
                                             Iniciar um ciclo
                                         </button>

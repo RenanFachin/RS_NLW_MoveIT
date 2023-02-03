@@ -20,11 +20,11 @@ export function Profile() {
             />
 
             <div className="ml-4 md:ml-6">
-                <strong className="text-lg md:text-2xl font-semibold text-text-title">
+                <strong className="text-lg md:text-2xl font-semibold text-text-title dark:text-white">
                     Renan Fachin
                 </strong>
 
-                <p className="text-xs mt-1 md:text-base md:mt-2 flex">
+                <p className="text-xs mt-1 md:text-base md:mt-2 flex dark:text-white">
                     <Image
                         src={Level}
                         alt={'Level'}
