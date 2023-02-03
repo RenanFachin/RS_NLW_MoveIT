@@ -10,7 +10,7 @@ import { LevelUpModal } from "@/components/LevelUpModal";
 
 //Tipando o que vem do arquivo JSON para depois atribuir no activeChallenge
 type Challenge = {
-    type: 'body' | 'eye';
+    type: string;
     description: string;
     amount: number;
 } | null
