@@ -50,7 +50,12 @@ module.exports = {
       cyan: {
         500: "#2AA9E0"
       }
-
+    },
+    animation: {
+      'overlayModal':  '150ms cubic-bezier(0.16, 1, 0.3, 1)'
+    },
+    backgroundImage: {
+      levelUp: "url(/icons/levelup.svg)"
     }
   },
   plugins: [],

@@ -9,6 +9,8 @@ import Head from "next/head";
 import { GetServerSideProps } from 'next'
 import { ChallengeProvider } from "@/contexts/ChallengsContext";
 import { ThemeButton } from "@/components/ThemeButton";
+import { LevelUpModal } from "@/components/LevelUpModal";
+import { useChallenges } from "@/hooks/useChallenges";
 
 
 interface HomeProps {
@@ -18,6 +20,7 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
+
 
   return (
     <ChallengeProvider
@@ -30,9 +33,13 @@ export default function Home(props: HomeProps) {
           <title>Início | Move.it</title>
         </Head>
 
+
         <ExperienceBar />
 
         <CountDownProvider>
+
+
+
           <section className="mt-16 md:mt-0 flex-1 grid md:grid-cols-2 gap-10 md:gap-24 content-center">
             <div>
               <div className="flex justify-between">
