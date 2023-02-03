@@ -7,17 +7,7 @@ export function LevelUpModal() {
 
     return (
         <Dialog.Root open={isLevelUpModalOpen}>
-            <Dialog.Trigger asChild>
-
-                <button className='text-lg text-green-500'>
-                    OPEN
-                </button>
-            </Dialog.Trigger>
             <Dialog.Portal>
-
-
-
-
                 <Dialog.Overlay className='fixed inset-0 animate-overlayModal bg-zinc-800 opacity-60' />
 
                 <Dialog.Content className='bg-white rounded-md w-full max-w-md py-8 px-12 shadow-lg text-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>

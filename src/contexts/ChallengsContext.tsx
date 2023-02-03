@@ -8,7 +8,7 @@ import Cookies from 'js-cookie'
 import { LevelUpModal } from "@/components/LevelUpModal";
 
 //Tipando o que vem do arquivo JSON para depois atribuir no activeChallenge
-interface Challenge {
+interface TChallenge {
     type?: 'body' | 'eye';
     description: string;
     amount: number;
@@ -18,7 +18,7 @@ interface ChallengeContextProps {
     level: number;
     currentExperience: number;
     challengesCompleted: number;
-    activeChallenge: Challenge;
+    activeChallenge: TChallenge;
     levelUp: () => void;
     startNewChallenge: () => void;
     resetChallenge: () => void;
@@ -49,7 +49,7 @@ export function ChallengeProvider({ children, ...rest }: ChallengeProviderProps)
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
 
     // criando um state para armazenar o challenge
-    const [activeChallenge, setActiveChallenge] = useState(null)
+    const [activeChallenge, setActiveChallenge] = useState(null as TChallenge | null)
 
 
     // Criando uma constante para gerenciar a quantidad de experiência para o próximo lvl
@@ -90,7 +90,7 @@ export function ChallengeProvider({ children, ...rest }: ChallengeProviderProps)
         const randomChallengeIndex = Math.floor(Math.random() * totalOfChallenges)
         const challenge = challenges[randomChallengeIndex]
 
-        setActiveChallenge(challenge)
+        setActiveChallenge(challenge) 
 
 
         new Audio('/public_notification.mp3').play()
