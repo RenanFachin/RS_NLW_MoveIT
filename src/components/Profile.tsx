@@ -16,19 +16,19 @@ export function Profile() {
                 alt={'Imagem do usuário'}
                 width={88}
                 height={88}
-                className="rounded-full"
+                className="rounded-full w-16 h-16 md:w-24 md:h-24"
             />
 
-            <div className="ml-6">
-                <strong className="text-2xl font-semibold text-text-title">
+            <div className="ml-4 md:ml-6">
+                <strong className="text-lg md:text-2xl font-semibold text-text-title">
                     Renan Fachin
                 </strong>
 
-                <p className="text-base mt-2 flex">
+                <p className="text-xs mt-1 md:text-base md:mt-2 flex">
                     <Image
                         src={Level}
                         alt={'Level'}
-                        className="mr-2"
+                        className="mr-1 md:mr-2"
                     />
 
                     Level {level}

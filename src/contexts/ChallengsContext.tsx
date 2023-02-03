@@ -29,6 +29,7 @@ export const ChallengeContext = createContext({} as ChallengeContextProps)
 
 interface ChallengeProviderProps {
     children: ReactNode;
+    // Props que vem do GetServerSideProps
     level: number;
     currentExperience: number;
     challengesCompleted: number;
@@ -37,6 +38,7 @@ interface ChallengeProviderProps {
 // desta forma o ...rest terá level, currentexperience e challengescompleted dentro
 export function ChallengeProvider({ children, ...rest }: ChallengeProviderProps) {
 
+    // Atribuindo o valor iniciou ou o valor que vem do GetServerSideProps
     const [level, setLevel] = useState(rest.level ?? 1)
     const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0)
     const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0)

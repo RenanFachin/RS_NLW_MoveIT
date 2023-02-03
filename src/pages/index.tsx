@@ -9,9 +9,13 @@ import Head from "next/head";
 import { GetServerSideProps } from 'next'
 import { ChallengeProvider } from "@/contexts/ChallengsContext";
 
+interface HomeProps {
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
+}
 
-
-export default function Home(props) {
+export default function Home(props: HomeProps) {
 
   return (
     <ChallengeProvider
@@ -27,7 +31,7 @@ export default function Home(props) {
         <ExperienceBar />
 
         <CountDownProvider>
-          <section className="flex-1 grid grid-cols-2 gap-24 content-center">
+          <section className="mt-16 md:mt-0 flex-1 grid md:grid-cols-2 gap-10 md:gap-24 content-center">
             <div>
               <Profile />
 
